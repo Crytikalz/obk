@@ -3,45 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shining Text with Entry Effect</title>
   <style>
     body {
       background-color: black;
       color: white;
       font-family: monospace;
+      margin: 0;
+      overflow: hidden;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+    }
+
+    /* Overlay styles */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       flex-direction: column;
     }
 
-    /* Shining text effect */
-    .shining-text {
+    /* Shining text on entry page */
+    .enter-text {
       font-size: 4rem;
       font-weight: bold;
-      background: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
+      background: linear-gradient(90deg, #fff, #e0e0e0, #aaa, #fff, #e0e0e0);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      animation: colorChange 5s infinite, shine 3s infinite;
-      margin-bottom: 20px;
-    }
-
-    @keyframes colorChange {
-      0% { background-position: 0%; }
-      100% { background-position: 200%; }
+      animation: shine 3s infinite;
+      cursor: pointer;
     }
 
     @keyframes shine {
-      0% {
-        text-shadow: none;
-      }
-      50% {
-        text-shadow: 0 0 20px white, 0 0 40px white, 0 0 60px white;
-      }
-      100% {
-        text-shadow: none;
-      }
+      0% { text-shadow: none; }
+      50% { text-shadow: 0 0 15px #ffffff, 0 0 30px #f0f0f0, 0 0 45px #b0b0b0; }
+      100% { text-shadow: none; }
+    }
+
+    /* Content that appears after clicking */
+    .content {
+      display: none;
+      text-align: center;
     }
 
     /* Typing effect styles */
@@ -54,12 +66,8 @@
 
     /* Blinking cursor effect */
     @keyframes blink {
-      0%, 100% {
-        border-color: transparent;
-      }
-      50% {
-        border-color: white;
-      }
+      0%, 100% { border-color: transparent; }
+      50% { border-color: white; }
     }
 
     .typing-effect {
@@ -68,14 +76,29 @@
   </style>
 </head>
 <body>
-  <div class="shining-text">SHINING TEXT</div>
 
-  <div id="typing-text" class="typing-effect"></div>
+  <!-- Overlay with Enter text -->
+  <div id="overlay" class="overlay">
+    <div class="enter-text" onclick="enterWorld()">Enter OBK's World</div>
+  </div>
+
+  <!-- Hidden content initially -->
+  <div class="content">
+    <!-- Background music -->
+    <audio id="background-sound" autoplay loop>
+      <source src="your-sound-file.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <div class="shining-text">COOL METALLIC SHINE</div>
+    <div id="typing-text" class="typing-effect"></div>
+  </div>
 
   <script>
-    const text = "This text types itself in below the ASCII art...";
+    const text = "This text types itself in below the metallic shine...";
     let index = 0;
 
+    // Function to type text
     function typeText() {
       if (index < text.length) {
         document.getElementById("typing-text").innerHTML += text.charAt(index);
@@ -84,8 +107,18 @@
       }
     }
 
-    // Start typing effect
-    typeText();
+    // Function to enter the world (reveal the main page)
+    function enterWorld() {
+      document.getElementById("overlay").style.display = 'none';  // Remove overlay
+      document.querySelector('.content').style.display = 'block'; // Show content
+      document.body.style.overflow = 'auto'; // Allow scrolling if necessary
+      typeText();  // Start typing effect
+    }
+
+    // Optional: Control background music volume or behavior
+    const backgroundSound = document.getElementById("background-sound");
+    backgroundSound.volume = 0.3; // Adjust the volume level here (0.0 to 1.0)
   </script>
+
 </body>
 </html>
