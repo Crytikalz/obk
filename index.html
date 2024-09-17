@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASCII Art Website</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      text-align: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+    #ascii-art {
+      margin-top: 20vh;
+      font-size: 20px;
+    }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    #enter {
+      margin-top: 5vh;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="ascii-art">
+    <pre>
+      * * *
+     %%%@@@%%%#  ASCII ART
+      * * *
+    </pre>
+  </div>
+  <div id="enter">[ enter ]</div>
+
+  <canvas id="star-canvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById('star-canvas');
+    const ctx = canvas.getContext('2d');
+    const stars = [];
+
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function createStars() {
+      for (let i = 0; i < 150; i++) {
+        stars.push({
+          x: randomInt(0, canvas.width),
+          y: randomInt(0, canvas.height),
+          size: randomInt(1, 3)
+        });
+      }
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+        star.y += 0.5;
+        if (star.y > canvas.height) star.y = 0;
+      });
+      requestAnimationFrame(animateStars);
+    }
+
+    window.onload = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      createStars();
+      animateStars();
+    };
+  </script>
+</body>
+</html>
