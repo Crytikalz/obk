@@ -106,8 +106,8 @@
 
   <!-- Hidden content initially -->
   <div class="content">
-    <!-- Background music -->
-    <iframe id="background-sound" width="0" height="0" src="https://www.youtube.com/embed/l2TfjDmT6Y0?autoplay=1&loop=1&playlist=l2TfjDmT6Y0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <!-- Container for background music -->
+    <div id="audio-container"></div>
 
     <!-- ASCII art (replace with your own ASCII art) -->
     <div class="ascii-art">
@@ -129,7 +129,7 @@
   </div>
 
   <script>
-    const text = "Fuck yz & ak... OBK";
+    const text = "Fuck yz... OBK";
     let index = 0;
 
     // Function to type text
@@ -147,6 +147,12 @@
       document.querySelector('.content').style.display = 'block'; // Show content
       document.body.style.overflow = 'auto'; // Allow scrolling if necessary
       typeText();  // Start typing effect
+
+      // Create and play audio
+      const audio = new Audio('sounds/nettspend.mp3');
+      audio.loop = true;  // Loop the audio
+      audio.volume = 0.3; // Adjust volume level (0.0 to 1.0)
+      audio.play();      // Play the audio
     }
   </script>
 
