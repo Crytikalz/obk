@@ -54,6 +54,21 @@
     .content {
       display: none;
       text-align: center;
+      overflow: hidden;
+    }
+
+    /* Glowing metallic text */
+    .shining-text {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: silver;
+      animation: metallic-glow 3s infinite alternate;
+    }
+
+    @keyframes metallic-glow {
+      0% { color: #ffffff; text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #aaaaaa; }
+      50% { color: #c0c0c0; text-shadow: 0 0 20px #c0c0c0, 0 0 40px #ffffff, 0 0 60px #808080; }
+      100% { color: #ffffff; text-shadow: 0 0 10px #ffffff, 0 0 20px #c0c0c0, 0 0 30px #aaaaaa; }
     }
 
     /* Typing effect styles */
@@ -73,6 +88,13 @@
     .typing-effect {
       animation: blink 1s infinite;
     }
+
+    /* ASCII art container */
+    .ascii-art {
+      font-size: 1.2rem;
+      white-space: pre;
+      color: #00ff00; /* Adjust this to match the style of your ASCII art */
+    }
   </style>
 </head>
 <body>
@@ -90,16 +112,16 @@
       Your browser does not support the audio element.
     </audio>
 
-    <div class="shining-text">        _,gggggg,_      ,ggggggggggg,   ,ggg,        gg 
- ,d8P""d8P"Y8b,   dP"""88""""""Y8,dP""Y8b       dP 
-,d8'   Y8   "8b,dPYb,  88      `8bYb, `88      d8' 
-d8'    `Ybaaad88P' `"  88      ,8P `"  88    ,dP'  
-8P       `""""Y8       88aaaad8P"      88aaad8"    
-8b            d8       88""""Y8ba      88""""Yb,   
-Y8,          ,8P       88      `8b     88     "8b  
-`Y8,        ,8P'       88      ,8P     88      `8i 
- `Y8b,,__,,d8P'        88_____,d8'     88       Yb,
-   `"Y8888P"'         88888888P"       88        Y8</div>
+    <!-- ASCII art (replace with your own ASCII art) -->
+    <div class="ascii-art">
+      <!-- Paste your ASCII art here -->
+      ASCII ART GOES HERE
+    </div>
+
+    <!-- Glowing text with metallic effect -->
+    <div class="shining-text">COOL METALLIC SHINE</div>
+    
+    <!-- Self-typing text effect -->
     <div id="typing-text" class="typing-effect"></div>
   </div>
 
