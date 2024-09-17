@@ -107,23 +107,18 @@
   <!-- Hidden content initially -->
   <div class="content">
     <!-- Background music -->
-    <audio id="background-sound" autoplay loop>
-      <source src="nettspend.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
+    <iframe id="background-sound" width="0" height="0" src="https://www.youtube.com/embed/l2TfjDmT6Y0?autoplay=1&loop=1&playlist=l2TfjDmT6Y0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
     <!-- ASCII art (replace with your own ASCII art) -->
     <div class="ascii-art">
       <!-- Paste your ASCII art here -->
-
-  .oooooo.   oooooooooo.  oooo    oooo 
- d8P'  `Y8b  `888'   `Y8b `888   .8P'  
-888      888  888     888  888  d8'    
-888      888  888oooo888'  88888[      
-888      888  888    `88b  888`88b.    
-`88b    d88'  888    .88P  888  `88b.  
- `Y8bood8P'  o888bood8P'  o888o  o888o 
-
+      .oooooo.   oooooooooo.  oooo    oooo 
+      d8P'  `Y8b  `888'   `Y8b `888   .8P'  
+      888      888  888     888  888  d8'    
+      888      888  888oooo888'  88888[      
+      888      888  888    `88b  888`88b.    
+      `88b    d88'  888    .88P  888  `88b.  
+      `Y8bood8P'  o888bood8P'  o888o  o888o 
     </div>
 
     <!-- Glowing text with metallic effect -->
@@ -153,10 +148,6 @@
       document.body.style.overflow = 'auto'; // Allow scrolling if necessary
       typeText();  // Start typing effect
     }
-
-    // Optional: Control background music volume or behavior
-    const backgroundSound = document.getElementById("background-sound");
-    backgroundSound.volume = 0.3; // Adjust the volume level here (0.0 to 1.0)
   </script>
 
 </body>
